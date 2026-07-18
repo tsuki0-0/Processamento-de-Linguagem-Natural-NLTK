@@ -99,5 +99,4 @@ Cancelamento --->
 ---
 
 ## 👨‍💻 *Autor do Projeto*
-
-** *Jhuan Silva* ** ** *Curso de IA - Generativa* **
+*Jhuan Silva Curso de IA - Generativa*
