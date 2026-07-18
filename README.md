@@ -39,8 +39,7 @@ Este projeto reúne, em uma única aplicação, os principais conceitos introdut
 ## 📂 Estrutura do Projeto
 
 ```text
-.
-├── app.py
+├── Aula_7_PLN.py
 ├── requirements.txt
 └── README.md
 ```
@@ -64,7 +63,29 @@ Este projeto reúne, em uma única aplicação, os principais conceitos introdut
 **Entrada**
 
 ```text
-O atendimento foi excelente e o produto chegou rapidamente.
+Positivas --->
+1. O atendimento foi excelente e muito rápido.
+2. Gostei bastante do produto.
+3. O serviço foi ótimo e recomendo.
+4. Estou muito satisfeito com a compra.
+
+Negativas --->
+1. O atendimento foi ruim e demorado.
+2. Encontrei um erro no sistema.
+3. O produto é péssimo e não funciona.
+4. Estou insatisfeito com o serviço.
+
+Financeiro --->
+1. Preciso resolver um problema no pagamento.
+2. Meu boleto venceu e quero emitir outro.
+
+Suporte Técnico --->
+1. O sistema apresentou erro ao fazer login.
+2. O aplicativo travou várias vezes.
+
+Cancelamento --->
+1. Quero cancelar minha assinatura.
+2. Desejo cancelar meu pedido.
 ```
 
 **Saída**
@@ -77,8 +98,6 @@ O atendimento foi excelente e o produto chegou rapidamente.
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 *Autor do Projeto*
 
-**Jhuan Silva**
-
-Curso de **IA - Generativa**
+** *Jhuan Silva* ** ** *Curso de IA - Generativa* **
