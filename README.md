@@ -1,0 +1,1 @@
+# -An-lise-de-Sentimentos-e-Processamento-de-Linguagem-Natural-NLTK-
