@@ -97,7 +97,9 @@ Cancelamento --->
 - Resultado da análise com VADER
 
 ---
+# 💻 Site
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://processamento-de-linguagem-natural-nltk.onrender.com)
 
-## 👨‍💻 *Autor do Projeto*
-*Jhuan Silva*
-*Projeto Desenvolvido no Curso de IA - Generativa*
+# 👨‍💻 *Autor do Projeto*
+# *Jhuan Silva*
+# *Projeto Desenvolvido no Curso de IA - Generativa*
