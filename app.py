@@ -5,7 +5,7 @@
 import streamlit as st
 import nltk
 import string
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import stopwords
 from nltk import FreqDist
 from nltk.sentiment import SentimentIntensityAnalyzer
@@ -14,13 +14,14 @@ from deep_translator import GoogleTranslator
 # =====================================================
 #      DOWNLOAD DOS RECURSOS NECESSÁRIOS DO NLTK
 # =====================================================
-nltk.download("punkt")
+
 nltk.download("stopwords")
 nltk.download("vader_lexicon")
 
 # =====================================================
 #               TÍTULO DA APLICAÇÃO
 # =====================================================
+
 st.title("🧠 Análise de Sentimentos e Processamento de Linguagem Natural (NLTK)")
 
 # Campo para o usuário informar o texto
@@ -34,17 +35,19 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 1 - TOKENIZAÇÃO
-    # Divide o texto em palavras individuais
     # =====================================================
+
     st.header("1. Tokenização")
 
-    tokens = word_tokenize(texto)
+    # Não depende mais de punkt nem de punkt_tab
+    tokens = wordpunct_tokenize(texto)
+
     st.write(tokens)
 
     # =====================================================
     # ATIVIDADE 2 - FREQUÊNCIA DAS PALAVRAS
-    # Identifica quais palavras aparecem mais vezes
     # =====================================================
+
     st.header("2. Frequência das Palavras")
 
     freq = FreqDist(tokens)
@@ -52,8 +55,8 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 3 - REGRA CONDICIONAL
-    # Procura palavras negativas para priorizar atendimento
     # =====================================================
+
     st.header("3. Mensagem Prioritária")
 
     if "ruim" in texto or "péssimo" in texto or "erro" in texto:
@@ -63,8 +66,8 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 4 - STOPWORDS
-    # Remove palavras que não ajudam na análise
     # =====================================================
+
     st.header("4. Remoção de Stopwords")
 
     stop = stopwords.words("portuguese")
@@ -78,8 +81,8 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 5 - SENTIMENTO POR CONDICIONAL
-    # Analisa sentimento usando palavras-chave
     # =====================================================
+
     st.header("5. Sentimento por Condicional")
 
     positivas = [
@@ -108,10 +111,9 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 6 - CHATBOT
-    # Identifica o setor responsável pelo atendimento
     # =====================================================
-    st.header("6. Direcionamento do Atendimento")
 
+    st.header("6. Direcionamento do Atendimento")
 
     if "cancelar" in texto:
         st.write("Setor: Cancelamento")
@@ -127,18 +129,17 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 7 - PALAVRAS MAIS FREQUENTES
-    # Mostra as cinco palavras mais utilizadas
     # =====================================================
+
     st.header("7. Top 5 Palavras")
 
     st.write(freq.most_common(5))
 
     # =====================================================
-    # ATIVIDADE 8 - CLASSIFICAÇÃO DE MENSAGENS
-    # Classifica mensagens por palavras específicas
+    # ATIVIDADE 8 - CLASSIFICAÇÃO
     # =====================================================
-    st.header("8. Classificação")
 
+    st.header("8. Classificação")
 
     if "erro" in texto or "sistema" in texto:
         st.write("Categoria: Suporte Técnico")
@@ -151,8 +152,8 @@ if st.button("Executar"):
 
     # =====================================================
     # ATIVIDADE 9 - LIMPEZA DO TEXTO
-    # Remove pontuação e mantém apenas palavras
     # =====================================================
+
     st.header("9. Texto Limpo")
 
     texto_limpo = texto
@@ -163,49 +164,39 @@ if st.button("Executar"):
     st.write(texto_limpo)
 
     # =====================================================
-    # ATIVIDADE 10 - TOKENIZAÇÃO + CONDICIONAL
-    # Analisa sentimento usando os tokens gerados
+    # ATIVIDADE 10 - SENTIMENTO COM TOKENS
     # =====================================================
-    st.header("10. Sentimento com Tokens")
 
+    st.header("10. Sentimento com Tokens")
 
     if "ruim" in tokens or "péssimo" in tokens:
         st.write("Sentimento: Negativo")
-
     else:
         st.write("Sentimento: Positivo")
 
     # =====================================================
-    # ANÁLISE DE SENTIMENTOS COM VADER + TRADUÇÃO
-    # Traduz português para inglês para melhorar a análise
+    # ANÁLISE DE SENTIMENTOS COM VADER
     # =====================================================
-    st.header("Análise de Sentimentos com VADER")
 
+    st.header("Análise de Sentimentos com VADER")
 
     sia = SentimentIntensityAnalyzer()
 
-
-    # Tradução automática português -> inglês
     texto_traduzido = GoogleTranslator(
         source="pt",
         target="en"
     ).translate(texto)
 
-    # Análise do sentimento usando o texto traduzido
     resultado = sia.polarity_scores(texto_traduzido)
     compound = resultado["compound"]
 
-    # Define o sentimento final
     if compound >= 0.05:
         sentimento = "Positivo"
-
     elif compound <= -0.05:
         sentimento = "Negativo"
-
     else:
         sentimento = "Neutro"
 
-    # Exibição dos resultados
     st.write("Texto traduzido:", texto_traduzido)
     st.write("Sentimento:", sentimento)
     st.write("Compound:", compound)
